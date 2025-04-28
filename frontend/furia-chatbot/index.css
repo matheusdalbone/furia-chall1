@@ -1,0 +1,13 @@
+@font-face {
+  font-family: HelveticaWorld;
+  src: url(./src/assets/fonts/Helvetica.ttf);
+}
+
+* {
+  font-family: HelveticaWorld;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
