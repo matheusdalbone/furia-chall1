@@ -1,23 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./style.module.css";
-import { IoSendSharp } from "react-icons/io5";
+
 import { assistantResponse } from "../../services/api";
-import Markdown from 'react-markdown';
+
+import { IoSendSharp } from "react-icons/io5";
+import { BarLoader } from "react-spinners";
+import Markdown from "react-markdown";
 
 const Chat = () => {
   const [userQuestion, setUserQuestion] = useState("");
   const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const scrollInto = useRef();
 
   async function postAssistantResponse(question) {
-    assistantResponse(question)
+    setLoading(() => true);
+    await assistantResponse(question)
       .then((response) => {
         setMessages((messages) => [...messages, response.data]);
       })
       .catch((error) => {
         console.log(error);
-      });
+      })
+      .finally(() => setLoading(false));
   }
 
   const handleSubmit = (e) => {
@@ -53,10 +59,15 @@ const Chat = () => {
                 </div>
               ) : (
                 <div className={styles.assistantMessage}>
-                    <Markdown>{message.text}</Markdown>
+                  <Markdown>{message.text}</Markdown>
                 </div>
               )
             )}
+            {loading ? 
+              <div className={styles.assistantMessage}>
+                <BarLoader width={68} height={4}/>
+              </div>
+             : null}
           </div>
           <div className={styles.inputSection}>
             <form onSubmit={handleSubmit}>
