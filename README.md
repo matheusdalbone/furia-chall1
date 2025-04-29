@@ -77,7 +77,8 @@ O Furia Chatbot foi projetado para interagir com a comunidade da Furia, responde
 
 ## 📸 Demonstração
 
-
+<img src="examples/example1.png" alt="Exemplo 1" style="width: 855px; display: flex;">  
+<img src="examples/example2.png" alt="Exemplo 2" style="width: 855px; display: flex;"> 
 
 
 ## 🤝 Contribuições
