@@ -22,3 +22,7 @@ def furia_chat():
       return jsonify({'error': 'No JSON data found'}), 400 
   else: 
      return jsonify({'error': 'Invalid request method'}), 405
+   
+   
+if __name__ == "_main_":
+  app.run()
