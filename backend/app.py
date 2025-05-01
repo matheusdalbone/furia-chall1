@@ -5,10 +5,6 @@ from assistant import assistant_response
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/")
-def hello():
-  return "Hello world!"
-
 @app.route("/assistant", methods=['POST'])
 def furia_chat():
   if request.method == 'POST':
